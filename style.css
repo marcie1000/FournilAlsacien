@@ -1,0 +1,8 @@
+header {
+    display: flex;
+    padding: 10px 10px 10px 10px;
+}
+
+.headerElem {
+    margin: 10px;
+}
