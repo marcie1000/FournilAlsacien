@@ -1,8 +1,27 @@
 header {
+    background-color: black;
+    color: white;
     display: flex;
     padding: 10px 10px 10px 10px;
+    a {
+        color: white;
+    }
+}
+
+footer {
+    background-color: black;
+    color: white;
+    display: flex;
+    padding: 10px 10px 10px 10px;
+    a {
+        color: white;
+    }
 }
 
 .headerElem {
+    margin: 10px;
+}
+
+.footerElem {
     margin: 10px;
 }

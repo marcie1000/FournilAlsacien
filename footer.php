@@ -8,8 +8,8 @@
 </head>
 <body>
     <footer>
-    <a class="footerElem" href="">Mentions légales</a></p>
-    <a class="footerElem" href="">Nous contacter</a></p>
-</footer>
+        <a class="footerElem" href="mentions_legales.php">Mentions légales</a>
+        <a class="footerElem" href="nous_contacter.php">Nous contacter</a>
+    </footer>
 </body>
 </html>

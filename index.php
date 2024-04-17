@@ -11,11 +11,9 @@ header('Content-type: text/html; charset=utf-8');
 </head>
 <body>
     <section>
-        <?php
-        include("header.php");
-        ?>
+        <?php include("header.php");?>
         Page d'accueil
-
+        <?php include("footer.php");?>
     </section>
 </body>
 </html>
