@@ -45,3 +45,13 @@ CREATE TABLE IF NOT EXISTS EXISTER(
    presence BOOLEAN,
    trace BOOLEAN
 );
+
+-- CATEGORIE
+INSERT INTO CATEGORIE VALUES ('PAINS', 'Pains', 'Keller');
+INSERT INTO CATEGORIE VALUES ('VIENN', 'Viennoiseries', 'Keller');
+INSERT INTO CATEGORIE VALUES ('SPECI', 'Spécialités', 'Keller');
+
+-- PRODUIT
+-- INSERT INTO PRODUIT VALUES (refP, photoP, prix, poidsP, designation, descriptif, codeCat)
+INSERT INTO PRODUIT VALUES ('P001', null, 1.30, 250, 'Baguette traditionnelle', 'Une baguette croustillante à la croûte dorée pour accompagner vos repas ou pour réaliser des sandwichs.', 'PAINS');
+INSERT INTO PRODUIT VALUES ('P002', null, 3.80, 400, 'Pain de campagne', 'Un pain rustique au levain, avec une mie généreuse et un goût légèrement acidulé.', 'PAINS');
