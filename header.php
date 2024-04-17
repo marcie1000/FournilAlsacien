@@ -8,6 +8,7 @@
 </head>
 <body>
     <header>
+        <div class="logo"><img src="logo_le_fournil.jpg"></div>
         <a class="headerElem" href="index.php">Le fournil alsacien</a>
         <div class="headerElem">Nos produits : </div>
         <div class="headerElem">
