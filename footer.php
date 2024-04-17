@@ -1,6 +1,3 @@
-<?php
-header('Content-type: text/html; charset=utf-8');
-?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -10,10 +7,9 @@ header('Content-type: text/html; charset=utf-8');
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
-    <section>
-        <?php include("header.php");?>
-        Page d'accueil
-        <?php include("footer.php");?>
-    </section>
+    <footer>
+        <a class="footerElem" href="mentions_legales.php">Mentions légales</a>
+        <a class="footerElem" href="nous_contacter.php">Nous contacter</a>
+    </footer>
 </body>
 </html>
