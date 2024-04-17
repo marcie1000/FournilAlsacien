@@ -1,0 +1,47 @@
+DROP DATABASE IF EXISTS fournil_alsacien;
+
+CREATE DATABASE fournil_alsacien CHARACTER SET utf8;
+USE fournil_alsacien;
+
+CREATE TABLE IF NOT EXISTS CATEGORIE(
+   codeCat VARCHAR(5) PRIMARY KEY,
+   nomCat VARCHAR(20),
+   nomEmploye VARCHAR(50)
+);
+
+CREATE TABLE IF NOT EXISTS ALLERGENE(
+   id VARCHAR(5) PRIMARY KEY,
+   denomination VARCHAR(50)
+);
+
+CREATE TABLE IF NOT EXISTS PRODUIT(
+   refP VARCHAR(5) PRIMARY KEY,
+   photoP VARCHAR(50),
+   prix CURRENCY,
+   poidsP DOUBLE,
+   designation VARCHAR(50),
+   descriptif VARCHAR(255),
+   codeCat VARCHAR(5),
+   CONSTRAINT fk_categorie
+   FOREIGN KEY (codeCat)
+           REFERENCES CATEGORIE(codeCat)
+           ON UPDATE CASCADE
+           ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS EXISTER(
+   id VARCHAR(5),
+   refP VARCHAR(5),
+   PRIMARY KEY(id, refP),
+   CONSTRAINT fk_allergenes
+   FOREIGN KEY (id)
+        REFERENCES ALLERGENE(id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+   FOREIGN KEY (refP)
+        REFERENCES PRODUIT(refP)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+   presence LOGICAL,
+   trace LOGICAL
+);
