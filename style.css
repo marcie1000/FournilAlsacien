@@ -18,6 +18,11 @@ footer {
     }
 }
 
+.logo {
+    padding: 2em;
+    max-block-size: 20%;
+}
+
 .headerElem {
     margin: 10px;
 }
