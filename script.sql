@@ -55,3 +55,5 @@ INSERT INTO CATEGORIE VALUES ('SPECI', 'Spécialités', 'Keller');
 -- INSERT INTO PRODUIT VALUES (refP, photoP, prix, poidsP, designation, descriptif, codeCat)
 INSERT INTO PRODUIT VALUES ('P001', null, 1.30, 250, 'Baguette traditionnelle', 'Une baguette croustillante à la croûte dorée pour accompagner vos repas ou pour réaliser des sandwichs.', 'PAINS');
 INSERT INTO PRODUIT VALUES ('P002', null, 3.80, 400, 'Pain de campagne', 'Un pain rustique au levain, avec une mie généreuse et un goût légèrement acidulé.', 'PAINS');
+INSERT INTO PRODUIT VALUES ('P003', null, 4.00, 350, 'Pain aux céréales', 'Un pain moelleux aux graines de lin, pour une texture légèrement croquante.', 'PAINS');
+
