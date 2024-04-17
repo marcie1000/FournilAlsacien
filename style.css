@@ -18,9 +18,9 @@ footer {
     }
 }
 
-.logo {
-    padding: 2em;
-    max-block-size: 20%;
+img {
+    border-width: 2em;
+    border-color: white;
 }
 
 .headerElem {
