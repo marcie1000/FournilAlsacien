@@ -8,4 +8,5 @@
         <!-- <p>Les viennoiseries du fournil alsacien sont des viennoiseries alsaciennes faites de beure en Alsace et pas à Vienne</p> -->
 
     </body>
+    <?php include("footer.php");?>
 </html>

@@ -8,4 +8,5 @@
         <!-- <p>Les petits pains du fournil alsacien sont des petits pains alsaciens faits de pain en Alsace</p> -->
 
     </body>
+    <?php include("footer.php");?>
 </html>

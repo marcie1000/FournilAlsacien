@@ -8,4 +8,5 @@
         <!-- <p>Cette page est spéciale c'est pourquoi rien ne s'y trouve. (tout le monde l'évite elle est bizzare)</p> -->
 
     </body>
+    <?php include("footer.php");?>
 </html>
