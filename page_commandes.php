@@ -5,7 +5,7 @@
     <body>
         <?php include("header.php"); ?>
         <h1>Vos Commandes</h1>
-        <p>Dites au revoir à votre porte monnaie mais votre estomac et votre santé mentale vous remercient</p>
+        <!-- <p>Dites au revoir à votre porte monnaie mais votre estomac et votre santé mentale vous remercient</p> -->
 
         <table>
             <tr>    <!-- première ligne du tableau avec en-têtes pour les commandes-->

@@ -5,7 +5,7 @@
     <body>
         <?php include("header.php"); ?>
         <h1>Les Pains du Fournil Alsacien</h1>
-        <p>Les petits pains du fournil alsacien sont des petits pains alsaciens faits de pain en Alsace</p>
+        <!-- <p>Les petits pains du fournil alsacien sont des petits pains alsaciens faits de pain en Alsace</p> -->
 
     </body>
 </html>
