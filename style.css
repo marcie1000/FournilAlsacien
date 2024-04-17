@@ -1,8 +1,19 @@
+* {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
 header {
     background-color: black;
     color: white;
     display: flex;
+    justify-content: center;
     padding: 10px 10px 10px 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     a {
         color: white;
     }
@@ -10,12 +21,18 @@ header {
 
 footer {
     background-color: black;
+    justify-content: center;
     color: white;
     display: flex;
     padding: 10px 10px 10px 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     a {
         color: white;
     }
+      position: fixed;
 }
 
 img {
