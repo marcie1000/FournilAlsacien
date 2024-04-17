@@ -11,11 +11,11 @@
         <a class="headerElem" href="index.php">Le fournil alsacien</a>
         <div class="headerElem">Nos produits : </div>
         <div class="headerElem">
-            <a href="page_pain.html">Pains</a>
-            <a href="page_viennoiseries.html">Viennoiseries</a>
-            <a href="page_specialites.html">Spécialités</a>
+            <a href="page_pain.php">Pains</a>
+            <a href="page_viennoiseries.php">Viennoiseries</a>
+            <a href="page_specialites.php">Spécialités</a>
         </div>
-        <a class="headerElem" href="">Commandes</a></p>
+        <a class="headerElem" href="page_commandes.php">Commandes</a></p>
     </header>
 </body>
 </html>
