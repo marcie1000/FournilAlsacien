@@ -11,9 +11,9 @@
         <a class="headerElem" href="index.php">Le fournil alsacien</a>
         <div class="headerElem">Nos produits : </div>
         <div class="headerElem">
-            <a href="">Pains</a>
-            <a href="">Viennoiseries</a>
-            <a href="">Spécialités</a>
+            <a href="page_pain.html">Pains</a>
+            <a href="page_viennoiseries.html">Viennoiseries</a>
+            <a href="page_specialites.html">Spécialités</a>
         </div>
         <a class="headerElem" href="">Commandes</a></p>
     </header>
