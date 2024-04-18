@@ -35,7 +35,8 @@ footer {
       position: fixed;
 }
 
-img {
+.logo {
+    max-width: 4%;
     border-width: 2em;
     border-color: white;
 }
