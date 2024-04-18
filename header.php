@@ -3,19 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style.css" rel="stylesheet">
+
 </head>
 <body>
     <header>
         <img class="logo" src="logo_le_fournil.jpg">
-        <a class="headerElem" href="index.php">Le fournil alsacien</a>
-        <div class="headerElem">Nos produits : </div>
-        <div class="headerElem">
-            <a href="page_pain.php">Pains</a>
-            <a href="page_viennoiseries.php">Viennoiseries</a>
-            <a href="page_specialites.php">Spécialités</a>
-        </div>
-        <a class="headerElem" href="page_commandes.php">Commandes</a></p>
+        <form class="formHeader" action="index.php" method="post">
+            <input type="submit" class="headerElem" name="accueil" value="Le fournil alsacien">
+            <div class="headerElem">Nos produits : </div>
+            <input type="submit" class="headerElem hBtn" name="page_pain" value="Pains">
+            <input type="submit" class="headerElem hBtn" name="page_viennoiseries" value="Viennoiseries">
+            <input type="submit" class="headerElem hBtn" name="page_specialites" value="Spécialités">
+            <input type="submit" class="headerElem hBtn" name="page_commandes" value="Commandes">
+            <!-- <div class="headerElem">
+                 <a href="page_pain.php">Pains</a>
+                 <a href="page_viennoiseries.php">Viennoiseries</a>
+                 <a href="page_specialites.php">Spécialités</a>
+                 </div> -->
+            <!-- <a class="headerElem" href="page_commandes.php">Commandes</a></p> -->
+        </form>
     </header>
 </body>
 </html>

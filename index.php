@@ -20,13 +20,14 @@ header('Content-type: text/html; charset=utf-8');
     if(isset($_POST["page"]))
         $page = $_POST["page"];
 
-    switch($page)
-    {
-        default:
+    if($page == null)
         include("accueil.php");
-        echo "wooow";
-        break;
+    else if(file_exists($page.'.php'))
+        include($page.'.php');
+    else{
+        echo "<h1>Erreur</h1><p>La page demandée n'existe pas</p>";
     }
+
     echo "</section>";
     include("footer.php");
     ?>

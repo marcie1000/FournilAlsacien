@@ -4,7 +4,7 @@
     font-style: normal;
 }
 
-header {
+.formHeader {
     background-color: black;
     color: white;
     display: flex;
@@ -14,9 +14,6 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    a {
-        color: white;
-    }
 }
 
 footer {
@@ -43,6 +40,18 @@ footer {
 
 .headerElem {
     margin: 10px;
+    background-color: black;
+    border: none;
+    color: white;
+    font-size: 15px;
+}
+
+.hBtn {
+    text-decoration-line: underline;
+}
+
+.hBtn:hover {
+    color: orange;
 }
 
 .footerElem {
