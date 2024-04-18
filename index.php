@@ -11,10 +11,24 @@ header('Content-type: text/html; charset=utf-8');
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
-    <section>
-        <?php include("header.php");?>
-        Page d'accueil
-        <?php include("footer.php");?>
-    </section>
+    <?php
+    include("header.php");
+
+    echo "<section>";
+
+    $page = null;
+    if(isset($_POST["page"]))
+        $page = $_POST["page"];
+
+    switch($page)
+    {
+        default:
+        include("accueil.php");
+        echo "wooow";
+        break;
+    }
+    echo "</section>";
+    include("footer.php");
+    ?>
 </body>
 </html>
