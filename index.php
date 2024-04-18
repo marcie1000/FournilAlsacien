@@ -17,13 +17,19 @@ header('Content-type: text/html; charset=utf-8');
     echo "<section>";
 
     $page = null;
-    if(isset($_POST["page"]))
-        $page = $_POST["page"];
+    if(isset($_POST["page"])) {
+        $page = strtolower($_POST["page"]);
+        // enlève les espaces
+        for($i = 0; $i<strlen($page); $i++) {
+            if($page[$i] == ' ')
+                $page[$i] = '_';
+        }
+    }
 
-    if($page == null)
+    if($page == null || $page == "le_fournil_alsacien")
         include("accueil.php");
-    else if(file_exists($page.'.php'))
-        include($page.'.php');
+    else if(file_exists('page_'.$page.'.php'))
+        include('page_'.$page.'.php');
     else{
         echo "<h1>Erreur</h1><p>La page demandée n'existe pas</p>";
     }

@@ -8,8 +8,10 @@
 </head>
 <body>
     <footer>
-        <a class="footerElem" href="mentions_legales.php">Mentions légales</a>
-        <a class="footerElem" href="nous_contacter.php">Nous contacter</a>
+        <form action="index.php" method="post" class="formFooter">
+            <input type="submit" class="footerElem fBtn" name="page" value="Mentions légales">
+            <input type="submit" class="footerElem fBtn" name="page" value="Nous contacter">
+        </form>
     </footer>
 </body>
 </html>

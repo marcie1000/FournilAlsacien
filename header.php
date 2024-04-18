@@ -7,14 +7,14 @@
 </head>
 <body>
     <header>
-        <img class="logo" src="logo_le_fournil.jpg">
         <form class="formHeader" action="index.php" method="post">
-            <input type="submit" class="headerElem" name="accueil" value="Le fournil alsacien">
+            <img class="logo" src="logo_le_fournil.jpg">
+            <input type="submit" class="headerElem hBtn" name="page" value="Le fournil alsacien">
             <div class="headerElem">Nos produits : </div>
-            <input type="submit" class="headerElem hBtn" name="page_pain" value="Pains">
-            <input type="submit" class="headerElem hBtn" name="page_viennoiseries" value="Viennoiseries">
-            <input type="submit" class="headerElem hBtn" name="page_specialites" value="Spécialités">
-            <input type="submit" class="headerElem hBtn" name="page_commandes" value="Commandes">
+            <input type="submit" class="headerElem hBtn" name="page" value="Pains">
+            <input type="submit" class="headerElem hBtn" name="page" value="Viennoiseries">
+            <input type="submit" class="headerElem hBtn" name="page" value="Spécialités">
+            <input type="submit" class="headerElem hBtn" name="page" value="Commandes">
             <!-- <div class="headerElem">
                  <a href="page_pain.php">Pains</a>
                  <a href="page_viennoiseries.php">Viennoiseries</a>

@@ -16,7 +16,7 @@
     width: 100%;
 }
 
-footer {
+.formFooter {
     background-color: black;
     justify-content: center;
     color: white;
@@ -26,10 +26,7 @@ footer {
     bottom: 0;
     left: 0;
     width: 100%;
-    a {
-        color: white;
-    }
-      position: fixed;
+    position: fixed;
 }
 
 .logo {
@@ -38,7 +35,7 @@ footer {
     border-color: white;
 }
 
-.headerElem {
+.headerElem, .footerElem {
     margin: 10px;
     background-color: black;
     border: none;
@@ -46,11 +43,11 @@ footer {
     font-size: 15px;
 }
 
-.hBtn {
+.hBtn, .fBtn {
     text-decoration-line: underline;
 }
 
-.hBtn:hover {
+.hBtn:hover, .fBtn:hover {
     color: orange;
 }
 
