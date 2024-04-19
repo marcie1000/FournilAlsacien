@@ -62,3 +62,13 @@ INSERT INTO PRODUIT VALUES ('V003', null, 2.90, 90, 'Chausson aux pommes', ' Un 
 INSERT INTO PRODUIT VALUES ('S001', null, 2.00, 400, 'Fougasse aux olives', 'Une spécialité provençale, une focaccia moelleuse aux olives noires. Une portion.', 'SPECI');
 INSERT INTO PRODUIT VALUES ('S002', null, 5.50, 500, "Pain d'épices", "Un pain d'épices traditionnel, moelleux et parfumé, aux arômes de miel, de cannelle.", 'SPECI');
 INSERT INTO PRODUIT VALUES ('S003', null, 18.00, 660, 'Galette frangipane', 'Une galette pour 4 personnes à base de pâte d’amandes. Prix au kg.', 'SPECI');
+
+
+-- UTILISATEURS
+-- CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
+CREATE USER 'Visiteur'@'localhost' IDENTIFIED BY 'azerty67000$';
+CREATE USER 'MmeKeller'@'localhost' IDENTIFIED BY 'querty67000$';
+
+-- GRANT x ON fournil_alsacien TO username;
+GRANT SELECT, INSERT, UPDATE, DELETE ON fournil_alsacien TO username; -- lecture, ecriture, modification, suppression (pas execution)
+GRANT SELECT ON fournil_alsacien TO username; -- lecture
