@@ -2,7 +2,7 @@
 <html lang="fr">
     <header>
         <form class="formHeader" action="index.php" method="post">
-            <img class="logo" src="logo_le_fournil.jpg">
+            <img class="logo" src="images/logo_le_fournil.jpg">
             <input type="submit" class="headerElem hBtn" name="page" value="Le fournil alsacien">
             <div class="headerElem">Nos produits : </div>
             <input type="submit" class="headerElem hBtn" name="page" value="Pains">
