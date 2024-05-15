@@ -53,22 +53,28 @@ INSERT INTO CATEGORIE VALUES ('SPECI', 'Spécialités', 'Keller');
 
 -- PRODUIT
 -- INSERT INTO PRODUIT VALUES (refP, photoP, prix, poidsP, designation, descriptif, codeCat)
-INSERT INTO PRODUIT VALUES ('P001', null, 1.30, 250, 'Baguette traditionnelle', 'Une baguette croustillante à la croûte dorée pour accompagner vos repas ou pour réaliser des sandwichs.', 'PAINS');
-INSERT INTO PRODUIT VALUES ('P002', null, 3.80, 400, 'Pain de campagne', 'Un pain rustique au levain, avec une mie généreuse et un goût légèrement acidulé.', 'PAINS');
-INSERT INTO PRODUIT VALUES ('P003', null, 4.00, 350, 'Pain aux céréales', 'Un pain moelleux aux graines de lin, pour une texture légèrement croquante.', 'PAINS');
-INSERT INTO PRODUIT VALUES ('V001', null, 1.30, 50, 'Croissant pur beurre', "Un classique de la boulangerie, un croissant feuilleté, croustillant à l'extérieur, tendre et fondant à l'intérieur. ", 'VIENN');
-INSERT INTO PRODUIT VALUES ('V002', null, 2.60, 50, 'Pain au chocolat', 'Une viennoiserie gourmande, avec une généreuse barre chocolatée enveloppée dans une pâte feuilletée. croustillante. ', 'VIENN');
-INSERT INTO PRODUIT VALUES ('V003', null, 2.90, 90, 'Chausson aux pommes', ' Un chausson croustillant garni de compote de pommes maison, saupoudré de sucre et de cannelle. ', 'VIENN');
-INSERT INTO PRODUIT VALUES ('S001', null, 2.00, 400, 'Fougasse aux olives', 'Une spécialité provençale, une focaccia moelleuse aux olives noires. Une portion.', 'SPECI');
-INSERT INTO PRODUIT VALUES ('S002', null, 5.50, 500, "Pain d'épices", "Un pain d'épices traditionnel, moelleux et parfumé, aux arômes de miel, de cannelle.", 'SPECI');
-INSERT INTO PRODUIT VALUES ('S003', null, 18.00, 660, 'Galette frangipane', 'Une galette pour 4 personnes à base de pâte d’amandes. Prix au kg.', 'SPECI');
+INSERT INTO PRODUIT VALUES ('P001', 'images/pains/baguette250gr.png', 1.30, 250, 'Baguette traditionnelle', 'Une baguette croustillante à la croûte dorée pour accompagner vos repas ou pour réaliser des sandwichs.', 'PAINS');
+INSERT INTO PRODUIT VALUES ('P002', 'images/pains/painCampagne400gr.png', 3.80, 400, 'Pain de campagne', 'Un pain rustique au levain, avec une mie généreuse et un goût légèrement acidulé.', 'PAINS');
+INSERT INTO PRODUIT VALUES ('P003', 'images/pains/painCereales350gr.png', 4.00, 350, 'Pain aux céréales', 'Un pain moelleux aux graines de lin, pour une texture légèrement croquante.', 'PAINS');
+INSERT INTO PRODUIT VALUES ('V001', 'images/viennoiseries/croissantBeurre50gr.png', 1.30, 50, 'Croissant pur beurre', "Un classique de la boulangerie, un croissant feuilleté, croustillant à l'extérieur, tendre et fondant à l'intérieur. ", 'VIENN');
+INSERT INTO PRODUIT VALUES ('V002', 'images/viennoiseries/painChocolat50gr.png', 2.60, 50, 'Pain au chocolat', 'Une viennoiserie gourmande, avec une généreuse barre chocolatée enveloppée dans une pâte feuilletée. croustillante. ', 'VIENN');
+INSERT INTO PRODUIT VALUES ('V003', 'images/viennoiseries/chaussonPommes90gr.png', 2.90, 90, 'Chausson aux pommes', ' Un chausson croustillant garni de compote de pommes maison, saupoudré de sucre et de cannelle. ', 'VIENN');
+INSERT INTO PRODUIT VALUES ('S001', 'images/specialites/fougasseOlives400gr.jpg', 2.00, 400, 'Fougasse aux olives', 'Une spécialité provençale, une focaccia moelleuse aux olives noires. Une portion.', 'SPECI');
+INSERT INTO PRODUIT VALUES ('S002', 'images/specialites/galetteFrangipane660gr.png', 5.50, 500, "Pain d'épices", "Un pain d'épices traditionnel, moelleux et parfumé, aux arômes de miel, de cannelle.", 'SPECI');
+INSERT INTO PRODUIT VALUES ('S003', 'images/specialites/painEpicesMaison500gr.jpg', 18.00, 660, 'Galette frangipane', 'Une galette pour 4 personnes à base de pâte d’amandes. Prix au kg.', 'SPECI');
 
 
 -- UTILISATEURS
 -- CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
+DROP USER 'Visiteur'@'localhost';
+flush privileges;
 CREATE USER 'Visiteur'@'localhost' IDENTIFIED BY 'azerty67000$';
+
+DROP USER 'MmeKeller'@'localhost';
+flush privileges;
 CREATE USER 'MmeKeller'@'localhost' IDENTIFIED BY 'querty67000$';
 
+
 -- GRANT x ON fournil_alsacien TO username;
-GRANT SELECT, INSERT, UPDATE, DELETE ON fournil_alsacien TO username; -- lecture, ecriture, modification, suppression (pas execution)
-GRANT SELECT ON fournil_alsacien TO username; -- lecture
+-- GRANT SELECT, INSERT, UPDATE, DELETE ON fournil_alsacien TO username; -- lecture, ecriture, modification, suppression (pas execution)
+-- GRANT SELECT ON fournil_alsacien TO username; -- lecture
