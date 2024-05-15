@@ -1,3 +1,4 @@
+
 DROP DATABASE IF EXISTS fournil_alsacien;
 
 CREATE DATABASE fournil_alsacien CHARACTER SET utf8mb4;
@@ -66,11 +67,11 @@ INSERT INTO PRODUIT VALUES ('S003', 'images/specialites/painEpicesMaison500gr.jp
 
 -- UTILISATEURS
 -- CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
-DROP USER 'Visiteur'@'localhost';
+DROP USER IF EXISTS 'Visiteur'@'localhost';
 flush privileges;
 CREATE USER 'Visiteur'@'localhost' IDENTIFIED BY 'azerty67000$';
 
-DROP USER 'MmeKeller'@'localhost';
+DROP USER IF EXISTS 'MmeKeller'@'localhost';
 flush privileges;
 CREATE USER 'MmeKeller'@'localhost' IDENTIFIED BY 'querty67000$';
 
@@ -79,5 +80,5 @@ CREATE USER 'MmeKeller'@'localhost' IDENTIFIED BY 'querty67000$';
 -- GRANT SELECT, INSERT, UPDATE, DELETE ON fournil_alsacien TO username; -- lecture, ecriture, modification, suppression (pas execution)
 -- GRANT SELECT ON fournil_alsacien TO username; -- lecture
 
-GRANT SELECT, INSERT, UPDATE, DELETE ON fournil_alsacien TO 'MmeKeller'; -- lecture, ecriture, modification, suppression (pas execution)
-GRANT SELECT ON fournil_alsacien TO 'Visiteur'; -- lecture
+GRANT SELECT, INSERT, UPDATE, DELETE ON * TO 'MmeKeller'@'localhost'; -- lecture, ecriture, modification, suppression (pas execution)
+GRANT SELECT ON * TO 'Visiteur'@'localhost'; -- lecture
