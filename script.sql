@@ -78,3 +78,6 @@ CREATE USER 'MmeKeller'@'localhost' IDENTIFIED BY 'querty67000$';
 -- GRANT x ON fournil_alsacien TO username;
 -- GRANT SELECT, INSERT, UPDATE, DELETE ON fournil_alsacien TO username; -- lecture, ecriture, modification, suppression (pas execution)
 -- GRANT SELECT ON fournil_alsacien TO username; -- lecture
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON fournil_alsacien TO 'MmeKeller'; -- lecture, ecriture, modification, suppression (pas execution)
+GRANT SELECT ON fournil_alsacien TO 'Visiteur'; -- lecture
