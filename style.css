@@ -58,4 +58,31 @@
 
 section {
     margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+.imgProduit {
+    max-width: 300px;
+}
+
+.pdtCell {
+    width: 700px;
+}
+
+td {
+    border: 2px solid orange;
+    padding: 5px;
+}
+
+.imgPdtCell {
+    width: 300px;
+}
+
+.poidsCell {
+    width: 150px;
+}
+
+table {
+    padding: 0px;
+    border-collapse: collapse;
 }
