@@ -64,6 +64,43 @@ INSERT INTO PRODUIT VALUES ('S001', 'images/specialites/fougasseOlives400gr.jpg'
 INSERT INTO PRODUIT VALUES ('S002', 'images/specialites/galetteFrangipane660gr.png', 5.50, 500, "Pain d'épices", "Un pain d'épices traditionnel, moelleux et parfumé, aux arômes de miel, de cannelle.", 'SPECI');
 INSERT INTO PRODUIT VALUES ('S003', 'images/specialites/painEpicesMaison500gr.jpg', 18.00, 660, 'Galette frangipane', 'Une galette pour 4 personnes à base de pâte d’amandes. Prix au kg.', 'SPECI');
 
+-- INSERT INTO ALLERGENE VALUES (id, denomination);
+INSERT INTO ALLERGENE VALUES ('GLUT', 'gluten');
+INSERT INTO ALLERGENE VALUES ('LEVA', 'levain');
+INSERT INTO ALLERGENE VALUES ('LIN', 'lin');
+INSERT INTO ALLERGENE VALUES ('TOUR', 'tournesol');
+INSERT INTO ALLERGENE VALUES ('SESA', 'sésame');
+INSERT INTO ALLERGENE VALUES ('CHOC', 'chocolat');
+INSERT INTO ALLERGENE VALUES ('POMM', 'pommes');
+INSERT INTO ALLERGENE VALUES ('OLIV', 'olives');
+INSERT INTO ALLERGENE VALUES ('MIEL', 'miel');
+INSERT INTO ALLERGENE VALUES ('CANN', 'cannelle');
+INSERT INTO ALLERGENE VALUES ('EPIC', 'épices');
+INSERT INTO ALLERGENE VALUES ('AMAN', 'amandes');
+INSERT INTO ALLERGENE VALUES ('COQU', 'fruits à coques');
+
+-- INSERT INTO EXISTER VALUES (id, refP, presence, trace);
+INSERT INTO EXISTER VALUES ('GLUT', 'P001', true, false);
+INSERT INTO EXISTER VALUES ('GLUT', 'P002', true, false);
+INSERT INTO EXISTER VALUES ('LEVA', 'P002', true, false);
+INSERT INTO EXISTER VALUES ('GLUT', 'P003', true, false);
+INSERT INTO EXISTER VALUES ('LIN', 'P003', true, false);
+INSERT INTO EXISTER VALUES ('TOUR', 'P003', true, false);
+INSERT INTO EXISTER VALUES ('SESA', 'P003', true, false);
+INSERT INTO EXISTER VALUES ('GLUT', 'V001', true, false);
+INSERT INTO EXISTER VALUES ('GLUT', 'V002', true, false);
+INSERT INTO EXISTER VALUES ('CHOC', 'V002', true, false);
+INSERT INTO EXISTER VALUES ('GLUT', 'V003', true, false);
+INSERT INTO EXISTER VALUES ('POMM', 'V003', true, false);
+INSERT INTO EXISTER VALUES ('GLUT', 'S001', true, false);
+INSERT INTO EXISTER VALUES ('OLIV', 'S001', true, false);
+INSERT INTO EXISTER VALUES ('GLUT', 'S002', true, false);
+INSERT INTO EXISTER VALUES ('MIEL', 'S002', true, false);
+INSERT INTO EXISTER VALUES ('CANN', 'S002', true, false);
+INSERT INTO EXISTER VALUES ('EPIC', 'S002', true, false);
+INSERT INTO EXISTER VALUES ('GLUT', 'S003', true, false);
+INSERT INTO EXISTER VALUES ('AMAN', 'S003', true, false);
+INSERT INTO EXISTER VALUES ('COQU', 'S003', false, true);
 
 -- UTILISATEURS
 -- CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
