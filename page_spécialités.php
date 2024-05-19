@@ -2,6 +2,11 @@
 <html>
     <body>
         <h1>Les Spécialitées du Fournil Alsacien</h1>
-        <!-- <p>Cette page est spéciale c'est pourquoi rien ne s'y trouve. (tout le monde l'évite elle est bizzare)</p> -->
+        <?php
+        include "dbConnect.php";
+        $pdo = dbconnect();
+        $codeCat = "SPECI";
+        include "affiche_produit.php";
+        ?>
     </body>
 </html>
