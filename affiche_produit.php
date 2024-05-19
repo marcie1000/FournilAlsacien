@@ -12,6 +12,7 @@ $sql = $pdo->prepare('SELECT COUNT(*) AS nombre FROM PRODUIT WHERE PRODUIT.codeC
 $sql->execute(); // EXECUTE LA REQUETE
 $result = $sql->fetch(); // VA RECUPERER LE RESULTAT, fetchAll PEUT AUSSI ETRE UTILISE */
 $nb = $result['nombre'];
+echo "<form action='index.php' method='get'>";
 echo "<table class='tabPdt'>";
 for ($i = 1; $i <= $nb; $i++) {
     $sql = $pdo->prepare('SELECT prix, poidsP, designation, descriptif, photoP FROM PRODUIT WHERE PRODUIT.refP = "'.$codeCat[0].'00'.$i.'";');
@@ -22,7 +23,6 @@ for ($i = 1; $i <= $nb; $i++) {
     echo $result['descriptif'].'</td>';
     echo '<td class="poidsCell">Poids : '.$result['poidsP'].'g</td>';
     echo '<td class="imgPdtCell"><img class="imgProduit" src="'.$result["photoP"].'"></td>';
-    echo '<td class=prixCell>Prix : '.number_format((float)$result['prix'], 2, ',', '').' €</td>';
     $sql = $pdo->prepare('SELECT ALLERGENE.denomination, EXISTER.presence, EXISTER.trace FROM ALLERGENE, EXISTER WHERE EXISTER.refP = "'.$codeCat[0].'00'.$i.'" AND ALLERGENE.id = EXISTER.id;');
     $sql->execute();
     $strPresence = '<strong>Allergènes :</strong> ';
@@ -36,8 +36,14 @@ for ($i = 1; $i <= $nb; $i++) {
     echo '<td class="allergenesCell">';
     echo $strPresence.'<br>'.$strTraces;
     echo '</td>';
+    echo '<td class=prixCell>Prix : '.number_format((float)$result['prix'], 2, ',', '').' €</td>';
+    echo '<td class="qteCell">';
+    echo '<label for="qte'.$codeCat[0].'00'.$i.'">Quantité :<label>';
+    echo '<input class="qteForm" type="number" step="1" id="qte'.$codeCat[0].'00'.$i.'" name="qte'.$codeCat[0].'00'.$i.'" value="0"></td>';
     echo "</tr>";
 }
 echo "</table>";
+echo '<br><input class="panier" type="submit" value="🛒 Ajouter au panier">';
+echo "</form>";
 
 ?>

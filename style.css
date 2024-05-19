@@ -84,18 +84,35 @@ td {
 }
 
 .imgPdtCell {
-    width: 20%;
-}
-
-.prixCell {
-    width: 10%;
+    width: 15%;
 }
 
 .allergenesCell {
-    width: 205%;
+    width: 15%;
+}
+
+.prixCell {
+    width: 7%;
+}
+
+.qteCell {
+    width: 8%;
+}
+
+.qteForm {
+    max-width: 50px;
 }
 
 table {
-    margin: 0% 8%;
+    margin: 0% 6%;
     border-collapse: collapse;
+}
+
+.panier {
+    width: 250px;
+    height: 50px;
+    font-size: 20px;
+    background-color: orange;
+    border: 2px solid black;
+    border-radius: 15px;
 }
