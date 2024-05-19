@@ -5,6 +5,10 @@
     text-align: center;
 }
 
+strong {
+    font-weight: 800;
+}
+
 .formHeader {
     background-color: black;
     color: white;
@@ -66,21 +70,29 @@ section {
     max-width: 300px;
 }
 
-.pdtCell {
-    width: 50%;
-}
-
 td {
     border: 2px solid orange;
-    padding: 15px;
+    padding: 10px;
 }
 
-.imgPdtCell {
-    width: 30%;
+.pdtCell {
+    width: 45%;
 }
 
 .poidsCell {
     width: 10%;
+}
+
+.imgPdtCell {
+    width: 20%;
+}
+
+.prixCell {
+    width: 10%;
+}
+
+.allergenesCell {
+    width: 205%;
 }
 
 table {
