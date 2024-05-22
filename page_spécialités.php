@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html>
-    <body>
-        <h1>Les Spécialitées du Fournil Alsacien</h1>
-        <?php
-        include "dbConnect.php";
-        $pdo = dbconnect();
-        $codeCat = "SPECI";
-        include "affiche_produit.php";
-        ?>
-    </body>
-</html>
+<?php
+echo '<h1>Les spécialités du Fournil Alsacien</h1>';
+$codeCat = "SPECI";
+include "affiche_produit.php";
+
+?>

@@ -26,23 +26,20 @@
 
 
 // On capture les erreurs avec le boc try et le bloc catch permet d'afficher le message correspondant ? l'erreur si elle survient
-function dbconnect() {
+function dbconnect($user, $password) {
 
     try {
         $host = "mysql";
         $dbname = "fournil_alsacien";
-        $user = "root";
-        $mdp = "root";
-        $pdo = new PDO("mysql:host=$host; dbname=$dbname", "$user", "$mdp");
+        $pdo = new PDO("mysql:host=$host; dbname=$dbname", "$user", "$password");
 
         $pdo->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, false);
         return $pdo;
     }
     catch(Exception $e){
-        die ('Erreur :'. $e->getMessage()); // Va mettre fin au programme et afficher l'erreur
+        echo 'Erreur :'. $e->getMessage(); // Va mettre fin au programme et afficher l'erreur
+        return null;
     }
-
-    echo "PDO!";
 
 }
 ?>

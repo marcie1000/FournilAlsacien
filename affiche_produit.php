@@ -12,7 +12,8 @@ $sql = $pdo->prepare('SELECT COUNT(*) AS nombre FROM PRODUIT WHERE PRODUIT.codeC
 $sql->execute(); // EXECUTE LA REQUETE
 $result = $sql->fetch(); // VA RECUPERER LE RESULTAT, fetchAll PEUT AUSSI ETRE UTILISE */
 $nb = $result['nombre'];
-echo "<form action='index.php' method='get'>";
+echo "<form action='index.php' method='post'>";
+include("transmettre_info.php");
 echo "<table class='tabPdt'>";
 for ($i = 1; $i <= $nb; $i++) {
     $sql = $pdo->prepare('SELECT prix, poidsP, designation, descriptif, photoP FROM PRODUIT WHERE PRODUIT.refP = "'.$codeCat[0].'00'.$i.'";');

@@ -146,9 +146,13 @@ INSERT INTO EXISTER VALUES ('COQU', 'S003', false, true);
 
 -- UTILISATEURS
 -- CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
-DROP USER IF EXISTS 'Visiteur'@'localhost';
+DROP USER IF EXISTS 'visiteur'@'%';
 flush privileges;
-CREATE USER 'Visiteur'@'localhost' IDENTIFIED BY 'azerty67000$';
+CREATE USER 'visiteur'@'%' IDENTIFIED BY 'visiteur';
+
+DROP USER IF EXISTS 'test'@'%';
+flush privileges;
+CREATE USER 'test'@'%' IDENTIFIED BY 'azerty67000$';
 
 DROP USER IF EXISTS 'MmeKeller'@'localhost';
 flush privileges;
@@ -159,10 +163,19 @@ CREATE USER 'MmeKeller'@'localhost' IDENTIFIED BY 'querty67000$';
 -- GRANT SELECT ON fournil_alsacien TO username; -- lecture
 
 GRANT SELECT, INSERT, UPDATE, DELETE ON * TO 'MmeKeller'@'localhost'; -- lecture, ecriture, modification, suppression (pas execution)
-GRANT SELECT ON * TO 'Visiteur'@'localhost'; -- lecture
-GRANT INSERT ON fournil_alsacien.COMMANDE TO 'Visiteur'@'localhost';
-GRANT INSERT ON fournil_alsacien.QUANTIFIER TO 'Visiteur'@'localhost';
-GRANT INSERT ON fournil_alsacien.UTILISATEUR TO 'Visiteur'@'localhost';
+
+GRANT SELECT ON fournil_alsacien.CATEGORIE TO 'visiteur'@'%'; -- lecture
+GRANT SELECT ON fournil_alsacien.ALLERGENE TO 'visiteur'@'%';
+GRANT SELECT ON fournil_alsacien.PRODUIT TO 'visiteur'@'%'; -- lecture
+GRANT SELECT ON fournil_alsacien.EXISTER TO 'visiteur'@'%';
+
+GRANT SELECT ON fournil_alsacien.PRODUIT TO 'test'@'%'; -- lecture
+GRANT SELECT ON fournil_alsacien.CATEGORIE TO 'test'@'%'; -- lecture
+GRANT SELECT ON fournil_alsacien.ALLERGENE TO 'test'@'%';
+GRANT SELECT ON fournil_alsacien.EXISTER TO 'test'@'%';
+GRANT INSERT ON fournil_alsacien.COMMANDE TO 'test'@'%';
+GRANT INSERT ON fournil_alsacien.QUANTIFIER TO 'test'@'%';
+GRANT INSERT ON fournil_alsacien.UTILISATEUR TO 'test'@'%';
 
 -- INSERT INTO UTILISATEUR VALUES (idU, nomU, prenomU, numVoieU, nomVoieU, cpU, villeU, mailU);
-INSERT INTO UTILISATEUR VALUES ('Visiteur', 'Doe', 'John', 1, 'rue Schoch', '67000', 'Strasbourg', 'johndoe@gmail.com');
+INSERT INTO UTILISATEUR VALUES ('test', 'Doe', 'John', 1, 'rue Schoch', '67000', 'Strasbourg', 'johndoe@gmail.com');

@@ -13,7 +13,7 @@ strong {
     background-color: black;
     color: white;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     padding: 10px 10px 10px 10px;
     position: fixed;
     top: 0;
@@ -42,11 +42,15 @@ strong {
 }
 
 .headerElem, .footerElem {
-    margin: 10px;
+    margin: 0 1vw;
     background-color: black;
     border: none;
     color: white;
-    font-size: 15px;
+    font-size: 1vw;
+}
+
+.headerElem:last-child {
+    margin-left: auto;
 }
 
 .hBtn, .fBtn {
@@ -108,7 +112,7 @@ table {
     border-collapse: collapse;
 }
 
-.panier {
+.panier, .cnxBtn {
     width: 250px;
     height: 50px;
     font-size: 20px;
