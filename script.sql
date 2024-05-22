@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS EXISTER(
    id VARCHAR(5),
    refP VARCHAR(5),
    PRIMARY KEY(id, refP),
-   CONSTRAINT fk_allergenes
+   CONSTRAINT fk_exister
    FOREIGN KEY (id)
         REFERENCES ALLERGENE(id)
         ON UPDATE CASCADE
@@ -46,6 +46,48 @@ CREATE TABLE IF NOT EXISTS EXISTER(
    presence BOOLEAN,
    trace BOOLEAN
 );
+
+CREATE TABLE IF NOT EXISTS UTILISATEUR(
+    idU VARCHAR(50) PRIMARY KEY NOT NULL,
+    nomU VARCHAR(50),
+    prenomU VARCHAR(50),
+    numVoieU VARCHAR(6),
+    nomVoieU VARCHAR(50),
+    cpU VARCHAR(5),
+    villeU VARCHAR(50),
+    mailU VARCHAR(50)
+);
+
+CREATE TABLE COMMANDE(
+   idCommande INT PRIMARY KEY AUTO_INCREMENT,
+   validee BOOLEAN,
+   idU VARCHAR(50),
+   dateCommande DATE,
+   CONSTRAINT fk_commande
+   FOREIGN KEY (idU)
+           REFERENCES UTILISATEUR(idU)
+           ON UPDATE CASCADE
+           ON DELETE CASCADE
+);
+
+ALTER TABLE COMMANDE AUTO_INCREMENT = 1;
+
+CREATE TABLE QUANTIFIER(
+   refP VARCHAR(5),
+   idCommande INT,
+   quantite INT,
+   PRIMARY KEY(refP, idCommande),
+   CONSTRAINT fk_quantifier
+   FOREIGN KEY (idCommande)
+           REFERENCES COMMANDE(idCommande)
+           ON UPDATE CASCADE
+           ON DELETE CASCADE,
+   FOREIGN KEY (refP)
+           REFERENCES PRODUIT(refP)
+           ON UPDATE CASCADE
+           ON DELETE CASCADE
+);
+
 
 -- CATEGORIE
 INSERT INTO CATEGORIE VALUES ('PAINS', 'Pains', 'Keller');
@@ -112,10 +154,15 @@ DROP USER IF EXISTS 'MmeKeller'@'localhost';
 flush privileges;
 CREATE USER 'MmeKeller'@'localhost' IDENTIFIED BY 'querty67000$';
 
-
 -- GRANT x ON fournil_alsacien TO username;
 -- GRANT SELECT, INSERT, UPDATE, DELETE ON fournil_alsacien TO username; -- lecture, ecriture, modification, suppression (pas execution)
 -- GRANT SELECT ON fournil_alsacien TO username; -- lecture
 
 GRANT SELECT, INSERT, UPDATE, DELETE ON * TO 'MmeKeller'@'localhost'; -- lecture, ecriture, modification, suppression (pas execution)
 GRANT SELECT ON * TO 'Visiteur'@'localhost'; -- lecture
+GRANT INSERT ON fournil_alsacien.COMMANDE TO 'Visiteur'@'localhost';
+GRANT INSERT ON fournil_alsacien.QUANTIFIER TO 'Visiteur'@'localhost';
+GRANT INSERT ON fournil_alsacien.UTILISATEUR TO 'Visiteur'@'localhost';
+
+-- INSERT INTO UTILISATEUR VALUES (idU, nomU, prenomU, numVoieU, nomVoieU, cpU, villeU, mailU);
+INSERT INTO UTILISATEUR VALUES ('Visiteur', 'Doe', 'John', 1, 'rue Schoch', '67000', 'Strasbourg', 'johndoe@gmail.com');
