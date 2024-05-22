@@ -173,9 +173,9 @@ GRANT SELECT ON fournil_alsacien.PRODUIT TO 'test'@'%'; -- lecture
 GRANT SELECT ON fournil_alsacien.CATEGORIE TO 'test'@'%'; -- lecture
 GRANT SELECT ON fournil_alsacien.ALLERGENE TO 'test'@'%';
 GRANT SELECT ON fournil_alsacien.EXISTER TO 'test'@'%';
-GRANT INSERT ON fournil_alsacien.COMMANDE TO 'test'@'%';
-GRANT INSERT ON fournil_alsacien.QUANTIFIER TO 'test'@'%';
-GRANT INSERT ON fournil_alsacien.UTILISATEUR TO 'test'@'%';
+GRANT SELECT, INSERT, UPDATE ON fournil_alsacien.COMMANDE TO 'test'@'%';
+GRANT SELECT, INSERT, UPDATE ON fournil_alsacien.QUANTIFIER TO 'test'@'%';
+GRANT SELECT, INSERT, UPDATE ON fournil_alsacien.UTILISATEUR TO 'test'@'%';
 
 -- INSERT INTO UTILISATEUR VALUES (idU, nomU, prenomU, numVoieU, nomVoieU, cpU, villeU, mailU);
 INSERT INTO UTILISATEUR VALUES ('test', 'Doe', 'John', 1, 'rue Schoch', '67000', 'Strasbourg', 'johndoe@gmail.com');

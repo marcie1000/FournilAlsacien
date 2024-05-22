@@ -44,6 +44,8 @@ for ($i = 1; $i <= $nb; $i++) {
     echo "</tr>";
 }
 echo "</table>";
+// Pour informer la page index qu'on vient d'ajouter des produits à la commande
+echo '<input type="hidden" name="info" value="commande">';
 echo '<br><input class="panier" type="submit" value="🛒 Ajouter au panier">';
 echo "</form>";
 
