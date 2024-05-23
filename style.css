@@ -112,11 +112,20 @@ table {
     border-collapse: collapse;
 }
 
-.panier, .cnxBtn {
+.panier, .cnxBtn, .validerPanier {
     width: 250px;
     height: 50px;
     font-size: 20px;
     background-color: orange;
     border: 2px solid black;
     border-radius: 15px;
+}
+
+.panier:hover, .cnxBtn:hover, .validerPanier:hover {
+    background-color: #f7cb7b;
+}
+
+.tabCommande {
+    margin-left: auto;
+    margin-right: auto;
 }

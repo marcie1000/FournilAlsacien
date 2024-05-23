@@ -55,19 +55,60 @@ function ajouteAuPanier($pdo, $comActuelle, $refP, $qte) {
     }
 }
 
-function affichage($pdo, $idU) {
-    echo '<h1>Vos Commandes</h1>
+function affLigneTableau($pdo, $idU, $idCommande) {
+    echo '<td>'.$idCommande.'</td>';
+    try {
+        $sql2 = $pdo->prepare("SELECT COMMANDE.dateCommande FROM COMMANDE WHERE COMMANDE.idU = '$idU';");
+        $sql2->execute();
+        $row2 = $sql2->fetch();
+    }
+    catch(Exception $e){
+        die ('Erreur :'. $e->getMessage()); // Va mettre fin au programme et afficher l'erreur
+    }
 
-    <table>
+    echo '<td>'.$row2['dateCommande'].'</td>';
+
+    try{
+        $sql2 = $pdo->prepare('SELECT PRODUIT.designation, PRODUIT.prix, QUANTIFIER.quantite FROM PRODUIT, QUANTIFIER'.
+                              ' WHERE QUANTIFIER.refP = PRODUIT.refP AND QUANTIFIER.idCommande = "'.$idCommande.'";)');
+        $sql2->execute();
+    }
+    catch(Exception $e){
+        die ('Erreur :'. $e->getMessage()); // Va mettre fin au programme et afficher l'erreur
+    }
+    $row2 = $sql2->fetchAll();
+    echo '<td>';
+    foreach($row2 as $key=>$value) {
+        echo $value['designation'].'<br>';
+    }
+    echo '</td><td>';
+    foreach($row2 as $key=>$value) {
+        echo $value['quantite'].'<br>';
+    }
+    echo '</td><td>';
+    $total = 0;
+    foreach($row2 as $key=>$value) {
+        echo number_format($value['prix'], 2, ',', '').' €<br>';
+        $total += $value['prix'];
+    }
+    echo '</td><td>'.number_format($total, 2, ',', '').' €</td>';
+    echo '<td></td>';
+}
+
+// affiche les tableaux des commandes
+function affichageTableaux($pdo, $idU, $validees) {
+    echo '<table class="tabCommande">
         <tr>    <!-- première ligne du tableau avec en-têtes pour les commandes-->
             <td>Numéro</td>
             <td>Date</td>
             <td>Produits commandés</td>
             <td>Quantité</td>
+            <td>Prix unitaire</td>
+            <td>Prix total</td>
             <td>Date livraison</td>
         </tr>';
     try {
-        $sql = $pdo->prepare("SELECT COMMANDE.idCommande FROM COMMANDE WHERE COMMANDE.idU = '$idU';");
+        $sql = $pdo->prepare("SELECT COMMANDE.idCommande, COMMANDE.validee FROM COMMANDE WHERE COMMANDE.idU = '$idU';");
         $sql->execute();
     }
     catch(Exception $e){
@@ -76,38 +117,14 @@ function affichage($pdo, $idU) {
     $row = $sql->fetchAll();
     foreach($row as $key=>$value) {
         $idCommande = $value['idCommande'];
-        echo '<tr>';
-        echo '<td>'.$idCommande.'</td>';
-        try {
-            $sql2 = $pdo->prepare("SELECT COMMANDE.dateCommande FROM COMMANDE WHERE COMMANDE.idU = '$idU';");
-            $sql2->execute();
-            $row2 = $sql2->fetch();
-        }
-        catch(Exception $e){
-            die ('Erreur :'. $e->getMessage()); // Va mettre fin au programme et afficher l'erreur
-        }
 
-        echo '<td>'.$row2['dateCommande'].'</td>';
-
-        try{
-            $sql2 = $pdo->prepare('SELECT PRODUIT.designation, QUANTIFIER.quantite FROM PRODUIT, QUANTIFIER'.
-                                  ' WHERE QUANTIFIER.refP = PRODUIT.refP AND QUANTIFIER.idCommande = "'.$idCommande.'";)');
-            $sql2->execute();
+        if(($validees and $value['validee'] == 1) or (!$validees and $value['validee'] == 0)) {
+            echo '<tr>';
+            affLigneTableau($pdo, $idU, $idCommande);
+            echo '</tr>';
         }
-        catch(Exception $e){
-            die ('Erreur :'. $e->getMessage()); // Va mettre fin au programme et afficher l'erreur
-        }
-        $row2 = $sql2->fetchAll();
-        echo '<td>';
-        foreach($row2 as $key=>$value) {
-            echo $value['designation'].'<br>';
-        }
-        echo '</td><td>';
-        foreach($row2 as $key=>$value) {
-            echo $value['quantite'].'<br>';
-        }
-        echo '</tr></table>';
     }
+    echo '</table>';
 }
 
 include("get_commande_form.php");
@@ -123,5 +140,13 @@ foreach($panier as $key => $value) {
     }
 }
 
-affichage($pdo, $idU);
+echo '<h1>Votre panier</h1>';
+affichageTableaux($pdo, $idU, false);
+
+echo '<br><form method="post" id="" action="index.php">
+  <input class="validerPanier" type="submit" name="validerPanier" value="🛒 Valider votre panier">
+</form>';
+
+echo '<h1>Historique des commandes</h1>';
+affichageTableaux($pdo, $idU, true);
 ?>
