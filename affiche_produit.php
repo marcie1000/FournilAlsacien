@@ -1,6 +1,9 @@
 <?php
 // Notation objet PDO
 // PREPARE LA REQUETE
+$enableCommand = true;
+if($idU == "visiteur")
+    $enableCommand = false;
 $sql = $pdo->prepare('SELECT COUNT(*) AS nombre FROM PRODUIT WHERE PRODUIT.codeCat = "'.$codeCat.'";');
 
 /* RELIER LES VALEURS A LA REQUETE
@@ -40,13 +43,21 @@ for ($i = 1; $i <= $nb; $i++) {
     echo '<td class=prixCell>Prix : '.number_format((float)$result['prix'], 2, ',', '').' €</td>';
     echo '<td class="qteCell">';
     echo '<label for="qte'.$codeCat[0].'00'.$i.'">Quantité :<label>';
-    echo '<input class="qteForm" type="number" step="1" id="qte'.$codeCat[0].'00'.$i.'" name="qte'.$codeCat[0].'00'.$i.'" value="0"></td>';
+    echo '<input class="qteForm" type="number" step="1" id="qte'.$codeCat[0].'00'.$i.'" name="qte'.$codeCat[0].'00'.$i.'"';
+    if(!$enableCommand)
+        echo 'disabled="true">';
+    else
+        echo 'value="0"';
+    echo '</td>';
     echo "</tr>";
 }
 echo "</table>";
 // Pour informer la page index qu'on vient d'ajouter des produits à la commande
 echo '<input type="hidden" name="info" value="commande">';
-echo '<br><input class="panier" type="submit" value="🛒 Ajouter au panier">';
+echo '<br><input class="panier" type="submit" value="🛒 Ajouter au panier"';
+if(!$enableCommand)
+    echo 'disabled="true"';
+echo '>';
 echo "</form>";
 
 ?>

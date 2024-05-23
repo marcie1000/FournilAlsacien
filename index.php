@@ -40,15 +40,25 @@ header('Content-type: text/html; charset=utf-8');
         $identifiants['password'] = $mdpU;
     }
 
-    include("header.php");
-    echo "<section>";
-    echo $identifiants['user'].' '.$identifiants['password'];
-
     //teste les identifiants. Si mauvais, utilise "visiteur"
     include("dbConnect.php");
     $pdo = dbConnect($identifiants['user'], $identifiants['password']);
-    if($pdo == null)
+    if($pdo == null){
         $pdo = dbConnect('visiteur', 'visiteur');
+        $idU = 'visiteur';
+        $mdpU = 'visiteur';
+        include("header.php");
+        echo "<section>";
+        echo '<div class="errorMsg"><p>Erreur : identifiant ou mot de passe incorrect.</p></div>';
+        include("page_connexion.php");
+        echo "</section>";
+        include("footer.php");
+        die();
+    }
+
+    include("header.php");
+    echo "<section>";
+    echo $identifiants['user'].' '.$identifiants['password'];
 
     //récupère le nom de la page que l'on souhaite obtenir
     $page = null;

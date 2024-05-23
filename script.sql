@@ -174,7 +174,7 @@ GRANT SELECT ON fournil_alsacien.CATEGORIE TO 'test'@'%'; -- lecture
 GRANT SELECT ON fournil_alsacien.ALLERGENE TO 'test'@'%';
 GRANT SELECT ON fournil_alsacien.EXISTER TO 'test'@'%';
 GRANT SELECT, INSERT, UPDATE ON fournil_alsacien.COMMANDE TO 'test'@'%';
-GRANT SELECT, INSERT, UPDATE ON fournil_alsacien.QUANTIFIER TO 'test'@'%';
+GRANT SELECT, INSERT, UPDATE, DELETE ON fournil_alsacien.QUANTIFIER TO 'test'@'%';
 GRANT SELECT, INSERT, UPDATE ON fournil_alsacien.UTILISATEUR TO 'test'@'%';
 
 -- INSERT INTO UTILISATEUR VALUES (idU, nomU, prenomU, numVoieU, nomVoieU, cpU, villeU, mailU);

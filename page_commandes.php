@@ -45,7 +45,37 @@ function creerCommande($pdo, $idU) {
     return getCommandeActuelle($pdo, $idU);
 }
 
+// vérifie si une entrée a déjà eu lieu pour ce produit dans le panier
+// renvoie la quantité ou null si aucune entrée
+function verifieQuantitePanier($pdo, $comActuelle, $refP) {
+    try {
+        $sql = $pdo->prepare("SELECT QUANTIFIER.quantite FROM QUANTIFIER WHERE QUANTIFIER.idCommande = $comActuelle AND QUANTIFIER.refP = '$refP';");
+        $sql->execute();
+        $row = $sql->fetch();
+    }
+    catch(Exception $e){
+        die ('Erreur :'. $e->getMessage()); // Va mettre fin au programme et afficher l'erreur
+    }
+    echo var_dump($row).'<br>';
+    if($row == false)
+        return null;
+    else
+        return $row['quantite'];
+}
+
+function supprimeEntreePanier($pdo, $comActuelle, $refP) {
+    try {
+        $sql = $pdo->prepare("DELETE FROM QUANTIFIER WHERE QUANTIFIER.refP = '$refP' AND QUANTIFIER.idCommande = '$comActuelle';");
+        $sql->execute();
+    }
+    catch(Exception $e){
+        die ('Erreur :'. $e->getMessage()); // Va mettre fin au programme et afficher l'erreur
+    }
+}
+
 function ajouteAuPanier($pdo, $comActuelle, $refP, $qte) {
+    //vérifie si le produit est déjà dans le panier
+
     try {
         $sql = $pdo->prepare("INSERT INTO QUANTIFIER VALUES('$refP', $comActuelle, $qte);");
         $sql->execute();
@@ -127,26 +157,39 @@ function affichageTableaux($pdo, $idU, $validees) {
     echo '</table>';
 }
 
-include("get_commande_form.php");
-/* echo var_dump($panier); */
-//recherche si une commande est en cours
-$comActuelle = getCommandeActuelle($pdo, $idU);
-if(null == $comActuelle)
-    $comActuelle = creerCommande($pdo, $idU);
+function affPageCommandes($pdo, $idU) {
+    include("get_commande_form.php");
+    /* echo var_dump($panier); */
+    //recherche si une commande est en cours (panier), en créée une nouvelle si besoin
+    $comActuelle = getCommandeActuelle($pdo, $idU);
+    if(null == $comActuelle)
+        $comActuelle = creerCommande($pdo, $idU);
 
-foreach($panier as $key => $value) {
-    if($value != 0) {
-        ajouteAuPanier($pdo, $comActuelle, $key, $value);
+    //ajoute les éléments sélectionnés sur un formulaire produit au panier
+    foreach($panier as $key => $value) {
+        if($value == 0) {
+            if(verifieQuantitePanier($pdo, $comActuelle, $key) != null)
+                supprimeEntreePanier($pdo, $comActuelle, $key);
+        }
+        elseif($value > 0){
+            if(verifieQuantitePanier($pdo, $comActuelle, $key) != null)
+                supprimeEntreePanier($pdo, $comActuelle, $key);
+            ajouteAuPanier($pdo, $comActuelle, $key, $value);
+        }
     }
-}
 
-echo '<h1>Votre panier</h1>';
-affichageTableaux($pdo, $idU, false);
+    echo '<h1>Votre panier</h1>';
+    affichageTableaux($pdo, $idU, false);
 
-echo '<br><form method="post" id="" action="index.php">
+    echo '<br><form method="post" id="" action="index.php">
   <input class="validerPanier" type="submit" name="validerPanier" value="🛒 Valider votre panier">
 </form>';
 
-echo '<h1>Historique des commandes</h1>';
-affichageTableaux($pdo, $idU, true);
+    echo '<h1>Historique des commandes</h1>';
+    affichageTableaux($pdo, $idU, true);
+}
+
+if($idU != 'visiteur')
+    affPageCommandes($pdo, $idU);
+
 ?>
