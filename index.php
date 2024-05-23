@@ -74,13 +74,21 @@ header('Content-type: text/html; charset=utf-8');
     if(isset($_POST['info']) and $_POST['info'] == 'commande')
         $page = 'commandes';
 
-    //va sur la bonne page
-    if($page == null || $page == "le_fournil_alsacien")
-        include("accueil.php");
-    else if(file_exists('page_'.$page.'.php'))
-        include('page_'.$page.'.php');
-    else{
-        echo "<h1>Erreur</h1><p>La page demandée n'existe pas</p>";
+    switch($page){
+        case null:
+        case "le_fournil_alsacien":
+            include("accueil.php");
+            break;
+        case "commandes":
+            include('page_commandes.php');
+            affPageCommandes($pdo, $idU);
+            break;
+        default:
+            if(file_exists('page_'.$page.'.php'))
+                include('page_'.$page.'.php');
+            else
+                echo "<h1>Erreur</h1><p>La page demandée n'existe pas</p>";
+            break;
     }
 
     echo "</section>";

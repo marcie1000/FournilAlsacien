@@ -56,7 +56,6 @@ function verifieQuantitePanier($pdo, $comActuelle, $refP) {
     catch(Exception $e){
         die ('Erreur :'. $e->getMessage()); // Va mettre fin au programme et afficher l'erreur
     }
-    echo var_dump($row).'<br>';
     if($row == false)
         return null;
     else
@@ -158,6 +157,13 @@ function affichageTableaux($pdo, $idU, $validees) {
 }
 
 function affPageCommandes($pdo, $idU) {
+
+    if($idU == 'visiteur') {
+        echo "<div class='errorMsg'><p>Vous devez vous connecter avant d'effectuer des commandes !</p></div>";
+        return;
+    }
+
+    
     include("get_commande_form.php");
     /* echo var_dump($panier); */
     //recherche si une commande est en cours (panier), en créée une nouvelle si besoin
@@ -182,14 +188,12 @@ function affPageCommandes($pdo, $idU) {
     affichageTableaux($pdo, $idU, false);
 
     echo '<br><form method="post" id="" action="index.php">
-  <input class="validerPanier" type="submit" name="validerPanier" value="🛒 Valider votre panier">
-</form>';
+    <input class="validerPanier" type="submit" name="validerPanier" value="🛒 Valider votre panier">
+    </form>';
 
     echo '<h1>Historique des commandes</h1>';
     affichageTableaux($pdo, $idU, true);
 }
 
-if($idU != 'visiteur')
-    affPageCommandes($pdo, $idU);
 
 ?>

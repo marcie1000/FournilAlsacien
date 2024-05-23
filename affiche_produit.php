@@ -1,6 +1,7 @@
 <?php
 // Notation objet PDO
 // PREPARE LA REQUETE
+include("page_commandes.php");
 $enableCommand = true;
 if($idU == "visiteur")
     $enableCommand = false;
@@ -19,7 +20,8 @@ echo "<form action='index.php' method='post'>";
 include("transmettre_info.php");
 echo "<table class='tabPdt'>";
 for ($i = 1; $i <= $nb; $i++) {
-    $sql = $pdo->prepare('SELECT prix, poidsP, designation, descriptif, photoP FROM PRODUIT WHERE PRODUIT.refP = "'.$codeCat[0].'00'.$i.'";');
+    $refP = $codeCat[0].'00'.$i;
+    $sql = $pdo->prepare('SELECT prix, poidsP, designation, descriptif, photoP FROM PRODUIT WHERE PRODUIT.refP = "'.$refP.'";');
     $sql->execute();
     $result = $sql->fetch(); // VA RECUPERER LE RESULTAT, fetchAll PEUT AUSSI ETRE UTILISE */
     echo "<tr>";
@@ -27,7 +29,7 @@ for ($i = 1; $i <= $nb; $i++) {
     echo $result['descriptif'].'</td>';
     echo '<td class="poidsCell">Poids : '.$result['poidsP'].'g</td>';
     echo '<td class="imgPdtCell"><img class="imgProduit" src="'.$result["photoP"].'"></td>';
-    $sql = $pdo->prepare('SELECT ALLERGENE.denomination, EXISTER.presence, EXISTER.trace FROM ALLERGENE, EXISTER WHERE EXISTER.refP = "'.$codeCat[0].'00'.$i.'" AND ALLERGENE.id = EXISTER.id;');
+    $sql = $pdo->prepare('SELECT ALLERGENE.denomination, EXISTER.presence, EXISTER.trace FROM ALLERGENE, EXISTER WHERE EXISTER.refP = "'.$refP.'" AND ALLERGENE.id = EXISTER.id;');
     $sql->execute();
     $strPresence = '<strong>Allergènes :</strong> ';
     $strTraces = '<strong>Traces : </strong>';
@@ -42,12 +44,19 @@ for ($i = 1; $i <= $nb; $i++) {
     echo '</td>';
     echo '<td class=prixCell>Prix : '.number_format((float)$result['prix'], 2, ',', '').' €</td>';
     echo '<td class="qteCell">';
-    echo '<label for="qte'.$codeCat[0].'00'.$i.'">Quantité :<label>';
-    echo '<input class="qteForm" type="number" step="1" id="qte'.$codeCat[0].'00'.$i.'" name="qte'.$codeCat[0].'00'.$i.'"';
+    echo '<label for="qte'.$refP.'">Quantité :<label>';
+    echo '<input class="qteForm" type="number" step="1" id="qte'.$refP.'" name="qte'.$refP.'"';
     if(!$enableCommand)
         echo 'disabled="true">';
-    else
-        echo 'value="0"';
+    else {
+        $comActuelle = getCommandeActuelle($pdo, $idU);
+        if(null == $comActuelle)
+            $comActuelle = creerCommande($pdo, $idU);
+        $value = verifieQuantitePanier($pdo, $comActuelle, $refP);
+        if($value == null)
+            $value = 0;
+        echo 'value="'.$value.'"';
+    }
     echo '</td>';
     echo "</tr>";
 }
