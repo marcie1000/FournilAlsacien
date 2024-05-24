@@ -5,6 +5,14 @@
     text-align: center;
 }
 
+body {
+    background-color: #fcf7e8;
+}
+
+h1 {
+    font-size: 3vw;
+}
+
 strong {
     font-weight: 800;
 }
@@ -136,4 +144,22 @@ table {
 
 .errorMsg {
     color: red;
+}
+
+.logoAccueil {
+    max-width: 10%;
+}
+
+.illuAccueil {
+    max-width: 50%;
+}
+
+.presentation {
+    display: flex;
+    align-items: center;
+    margin: 5px 15%;
+}
+
+.presentationElem {
+    padding: 15px;
 }

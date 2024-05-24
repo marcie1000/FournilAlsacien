@@ -81,7 +81,7 @@ header('Content-type: text/html; charset=utf-8');
             break;
         case "commandes":
             include('page_commandes.php');
-            affPageCommandes($pdo, $idU);
+            affPageCommandes($pdo, $idU, $mdpU);
             break;
         default:
             if(file_exists('page_'.$page.'.php'))

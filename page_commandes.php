@@ -156,7 +156,7 @@ function affichageTableaux($pdo, $idU, $validees) {
     echo '</table>';
 }
 
-function affPageCommandes($pdo, $idU) {
+function affPageCommandes($pdo, $idU, $mdpU) {
 
     if($idU == 'visiteur') {
         echo "<div class='errorMsg'><p>Vous devez vous connecter avant d'effectuer des commandes !</p></div>";
@@ -189,7 +189,9 @@ function affPageCommandes($pdo, $idU) {
 
     echo '<br><form method="post" id="" action="index.php">
     <input class="validerPanier" type="submit" name="validerPanier" value="🛒 Valider votre panier">
-    </form>';
+    ';
+    include("transmettre_info.php");
+    echo '</form>';
 
     echo '<h1>Historique des commandes</h1>';
     affichageTableaux($pdo, $idU, true);
