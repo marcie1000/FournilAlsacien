@@ -118,7 +118,7 @@ function affLigneTableau($pdo, $idU, $idCommande) {
     $total = 0;
     foreach($row2 as $key=>$value) {
         echo number_format($value['prix'], 2, ',', '').' €<br>';
-        $total += $value['prix'];
+        $total += $value['prix'] * $value['quantite'];
     }
     echo '</td><td>'.number_format($total, 2, ',', '').' €</td>';
     echo '<td></td>';
