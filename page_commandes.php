@@ -156,7 +156,19 @@ function affichageTableaux($pdo, $idU, $validees) {
     echo '</table>';
 }
 
-function affPageCommandes($pdo, $idU, $mdpU) {
+function validerPanier($pdo, $idU, $comActuelle) {
+    try {
+        $sql = $pdo->prepare("UPDATE COMMANDE SET COMMANDE.validee = 1 WHERE COMMANDE.idCommande = $comActuelle;");
+        $sql->execute();
+    }
+    catch(Exception $e){
+        die ('Erreur :'. $e->getMessage()); // Va mettre fin au programme et afficher l'erreur
+    }
+
+    echo "<p>Commande validée !</p>";
+}
+
+function affPageCommandes($pdo, $idU, $mdpU, $validerPanier) {
 
     if($idU == 'visiteur') {
         echo "<div class='errorMsg'><p>Vous devez vous connecter avant d'effectuer des commandes !</p></div>";
@@ -171,25 +183,29 @@ function affPageCommandes($pdo, $idU, $mdpU) {
     if(null == $comActuelle)
         $comActuelle = creerCommande($pdo, $idU);
 
-    //ajoute les éléments sélectionnés sur un formulaire produit au panier
-    foreach($panier as $key => $value) {
-        if($value == 0) {
-            if(verifieQuantitePanier($pdo, $comActuelle, $key) != null)
-                supprimeEntreePanier($pdo, $comActuelle, $key);
-        }
-        elseif($value > 0){
-            if(verifieQuantitePanier($pdo, $comActuelle, $key) != null)
-                supprimeEntreePanier($pdo, $comActuelle, $key);
-            ajouteAuPanier($pdo, $comActuelle, $key, $value);
-        }
+    if($validerPanier) {
+        validerPanier($pdo, $idU, $comActuelle);
+        $comActuelle = creerCommande($pdo, $idU);
     }
+
+        //ajoute les éléments sélectionnés sur un formulaire produit au panier
+        foreach($panier as $key => $value) {
+            if($value == 0) {
+                if(verifieQuantitePanier($pdo, $comActuelle, $key) != null)
+                    supprimeEntreePanier($pdo, $comActuelle, $key);
+            }
+            elseif($value > 0){
+                if(verifieQuantitePanier($pdo, $comActuelle, $key) != null)
+                    supprimeEntreePanier($pdo, $comActuelle, $key);
+                ajouteAuPanier($pdo, $comActuelle, $key, $value);
+            }
+        }
 
     echo '<h1>Votre panier</h1>';
     affichageTableaux($pdo, $idU, false);
 
     echo '<br><form method="post" id="" action="index.php">
-    <input class="validerPanier" type="submit" name="validerPanier" value="🛒 Valider votre panier">
-    ';
+    <input class="validerPanier" type="submit" name="validerPanier" value="🛒 Valider votre panier">';
     include("transmettre_info.php");
     echo '</form>';
 
