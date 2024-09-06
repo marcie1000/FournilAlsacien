@@ -79,6 +79,7 @@ header('Content-type: text/html; charset=utf-8');
             $page = 'commandes';
         }
 
+        // Choisit la bonne page
         switch($page){
             case null:
             case "le_fournil_alsacien":

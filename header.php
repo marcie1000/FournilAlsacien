@@ -4,8 +4,9 @@ echo '
 <html lang="fr">
     <header>
         <form class="formHeader" action="index.php" method="post">';
-            include("transmettre_info.php");
-            echo '
+// Permet de transmettre de page en page les informations de l'identifiant et du mot de passe
+include("transmettre_info.php");
+echo '
             <img class="logo" src="images/logo_le_fournil.jpg">
             <input type="submit" class="headerElem hBtn" name="page" value="Le fournil alsacien">
             <div class="headerElem">Nos produits : </div>
