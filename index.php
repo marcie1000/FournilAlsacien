@@ -89,6 +89,13 @@ header('Content-type: text/html; charset=utf-8');
                 include('page_commandes.php');
                 affPageCommandes($pdo, $idU, $mdpU, $validerPanier);
                 break;
+            case "déconnexion":
+                include("déconnexion.php");
+                break;
+            case "créer_un_compte":
+                include("créer_un_compte.php");
+                creerUser($pdo);
+                break;
             default:
                 if(file_exists('page_'.$page.'.php'))
                     include('page_'.$page.'.php');

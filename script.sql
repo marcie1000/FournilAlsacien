@@ -168,6 +168,10 @@ GRANT SELECT ON fournil_alsacien.CATEGORIE TO 'visiteur'@'%'; -- lecture
 GRANT SELECT ON fournil_alsacien.ALLERGENE TO 'visiteur'@'%';
 GRANT SELECT ON fournil_alsacien.PRODUIT TO 'visiteur'@'%'; -- lecture
 GRANT SELECT ON fournil_alsacien.EXISTER TO 'visiteur'@'%';
+GRANT SELECT ON fournil_alsacien.UTILISATEUR TO 'visiteur'@'%';
+GRANT SELECT, INSERT, UPDATE ON fournil_alsacien.COMMANDE TO 'visiteur'@'%';
+GRANT SELECT, INSERT, UPDATE, DELETE ON fournil_alsacien.QUANTIFIER TO 'visiteur'@'%';
+GRANT SELECT, INSERT, UPDATE ON fournil_alsacien.UTILISATEUR TO 'visiteur'@'%';
 
 GRANT SELECT ON fournil_alsacien.PRODUIT TO 'test'@'%'; -- lecture
 GRANT SELECT ON fournil_alsacien.CATEGORIE TO 'test'@'%'; -- lecture
@@ -176,6 +180,9 @@ GRANT SELECT ON fournil_alsacien.EXISTER TO 'test'@'%';
 GRANT SELECT, INSERT, UPDATE ON fournil_alsacien.COMMANDE TO 'test'@'%';
 GRANT SELECT, INSERT, UPDATE, DELETE ON fournil_alsacien.QUANTIFIER TO 'test'@'%';
 GRANT SELECT, INSERT, UPDATE ON fournil_alsacien.UTILISATEUR TO 'test'@'%';
+
+-- Permet à visiteur de créer des utilisateurs et de leur donner ses droits
+GRANT CREATE USER ON *.* TO 'visiteur'@'%' WITH GRANT OPTION;
 
 -- INSERT INTO UTILISATEUR VALUES (idU, nomU, prenomU, numVoieU, nomVoieU, cpU, villeU, mailU);
 INSERT INTO UTILISATEUR VALUES ('test', 'Doe', 'John', 1, 'rue Schoch', '67000', 'Strasbourg', 'johndoe@gmail.com');
