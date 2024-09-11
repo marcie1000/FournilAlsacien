@@ -43,6 +43,33 @@ strong {
     position: fixed;
 }
 
+.connexionColonnes {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+}
+
+.ccElem {
+    margin-top: 0px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.ccElemMargin {
+    border-right: solid black 1px;
+}
+
+.creerUserColonnes {
+    display: flex;
+    justify-content: center;
+}
+
+.cuElem {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
 .logo {
     max-width: 4%;
     border-width: 2em;
@@ -146,6 +173,10 @@ table {
     color: red;
 }
 
+.infoMsg {
+    color: green;
+}
+
 .logoAccueil {
     max-width: 10%;
 }
@@ -162,4 +193,8 @@ table {
 
 .presentationElem {
     padding: 15px;
+}
+
+.champObligatoire {
+    color: red;
 }
