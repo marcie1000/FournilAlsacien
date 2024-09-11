@@ -8,6 +8,11 @@
 // ---------- RECUPERER LA COMMANDE ACTUELLE
 function getCommandeActuelle($pdo, $idU) {
     try {
+        $date = date( "Ymd" , time());
+        $sql = $pdo->prepare("UPDATE COMMANDE SET datecommande = $date WHERE COMMANDE.idCommande = (SELECT MAX(COMMANDE.idCommande)) ;");
+        $sql->execute();
+        $row = $sql->fetch();
+
         $sql = $pdo->prepare("SELECT MAX(COMMANDE.idCommande) AS 'comActuelle' FROM COMMANDE  WHERE COMMANDE.idU = '$idU';");
         $sql->execute(); //execute la requete
         $row = $sql->fetch(); //récupère la commande dans la ligne
