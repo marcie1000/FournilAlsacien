@@ -3,6 +3,9 @@
 // renvoie le numéro de la dernière commande créée si elle n'est pas encore validée,
 // renvoie null si la dernière commande est validée ou si il n'y a aucune commande
 // associée à l'utilisateur.
+
+
+// ---------- RECUPERER LA COMMANDE ACTUELLE
 function getCommandeActuelle($pdo, $idU) {
     try {
         $sql = $pdo->prepare("SELECT MAX(COMMANDE.idCommande) AS 'comActuelle' FROM COMMANDE  WHERE COMMANDE.idU = '$idU';");
@@ -32,6 +35,7 @@ function getCommandeActuelle($pdo, $idU) {
     return $comActuelle;
 }
 
+// ---------- CREER UNE NOUVELLE COMMANDE AVEC UN NOUVEAU NUMERO
 function creerCommande($pdo, $idU) {
     try {
         $sql = $pdo->prepare("INSERT INTO COMMANDE VALUES(null, 0, '$idU', null);");
@@ -47,6 +51,7 @@ function creerCommande($pdo, $idU) {
 
 // vérifie si une entrée a déjà eu lieu pour ce produit dans le panier
 // renvoie la quantité ou null si aucune entrée
+// ---------- VERIFIER LA QUANTITE DU PANIER
 function verifieQuantitePanier($pdo, $comActuelle, $refP) {
     try {
         $sql = $pdo->prepare("SELECT QUANTIFIER.quantite FROM QUANTIFIER WHERE QUANTIFIER.idCommande = $comActuelle AND QUANTIFIER.refP = '$refP';");
@@ -62,6 +67,7 @@ function verifieQuantitePanier($pdo, $comActuelle, $refP) {
         return $row['quantite'];
 }
 
+// ---------- SUPPRIMER UNE ENTREE (UN PRODUIT) DU PANIER
 function supprimeEntreePanier($pdo, $comActuelle, $refP) {
     try {
         $sql = $pdo->prepare("DELETE FROM QUANTIFIER WHERE QUANTIFIER.refP = '$refP' AND QUANTIFIER.idCommande = '$comActuelle';");
@@ -72,6 +78,7 @@ function supprimeEntreePanier($pdo, $comActuelle, $refP) {
     }
 }
 
+// ---------- AJOUTER UNE ENTREE AU PANIER
 function ajouteAuPanier($pdo, $comActuelle, $refP, $qte) {
     //vérifie si le produit est déjà dans le panier
 
@@ -84,6 +91,7 @@ function ajouteAuPanier($pdo, $comActuelle, $refP, $qte) {
     }
 }
 
+// ---------- AFFICHER LES COMMANDES
 function affLigneTableau($pdo, $idU, $idCommande) {
     echo '<td>'.$idCommande.'</td>';
     try {
@@ -124,7 +132,7 @@ function affLigneTableau($pdo, $idU, $idCommande) {
     echo '<td></td>';
 }
 
-// affiche les tableaux des commandes
+// ---------- affiche les tableaux des commandes
 function affichageTableaux($pdo, $idU, $validees) {
     echo '<table class="tabCommande">
         <tr>    <!-- première ligne du tableau avec en-têtes pour les commandes-->
@@ -156,6 +164,7 @@ function affichageTableaux($pdo, $idU, $validees) {
     echo '</table>';
 }
 
+// ---------- VALIDER LE PANIER POUR PASSER LA COMMANDE
 function validerPanier($pdo, $idU, $comActuelle) {
     try {
         $sql = $pdo->prepare("UPDATE COMMANDE SET COMMANDE.validee = 1 WHERE COMMANDE.idCommande = $comActuelle;");
@@ -168,6 +177,8 @@ function validerPanier($pdo, $idU, $comActuelle) {
     echo "<p>Commande validée !</p>";
 }
 
+
+// ---------- AFFICHAGE GLOBAL DE LA PAGE COMMANDES
 function affPageCommandes($pdo, $idU, $mdpU, $validerPanier) {
 
     if($idU == 'visiteur') {
