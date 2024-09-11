@@ -9,8 +9,8 @@
 function getCommandeActuelle($pdo, $idU) {
     try {
         $sql = $pdo->prepare("SELECT MAX(COMMANDE.idCommande) AS 'comActuelle' FROM COMMANDE  WHERE COMMANDE.idU = '$idU';");
-        $sql->execute();
-        $row = $sql->fetch();
+        $sql->execute(); //execute la requete
+        $row = $sql->fetch(); //récupère la commande dans la ligne
     }
     catch(Exception $e){
         die ('Erreur :'. $e->getMessage()); // Va mettre fin au programme et afficher l'erreur
@@ -38,7 +38,9 @@ function getCommandeActuelle($pdo, $idU) {
 // ---------- CREER UNE NOUVELLE COMMANDE AVEC UN NOUVEAU NUMERO
 function creerCommande($pdo, $idU) {
     try {
-        $sql = $pdo->prepare("INSERT INTO COMMANDE VALUES(null, 0, '$idU', null);");
+        $dt = time(); //récupère le nombre de secondes depuis l'heure unix
+        $date = date( "d/m/Y H:i", $dt ); // retrouve la date et l'heure actuelle à partir de $dt
+        $sql = $pdo->prepare("INSERT INTO COMMANDE VALUES(null, 0, '$idU', $date);");
         $sql->execute();
         $row = $sql->fetch();
     }
