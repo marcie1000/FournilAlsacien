@@ -47,7 +47,7 @@ function creerCommande($pdo, $idU) {
     try {
         //$dt = time(); //récupère le nombre de secondes depuis l'heure unix
         //$date = date( "Y-m-d", $dt ); // retrouve la date et l'heure actuelle à partir de $dt
-        $date = date( "Y-m-d" , time()); // fait la même chose que les lignes au dessus, ne pas les effacer quand même!!!
+        $date = date( "Ymd" , time()); // fait la même chose que les lignes au dessus, ne pas les effacer quand même!!!
         $sql = $pdo->prepare("INSERT INTO COMMANDE VALUES(null, 0, '$idU', $date);");
         $sql->execute();
         $row = $sql->fetch();
