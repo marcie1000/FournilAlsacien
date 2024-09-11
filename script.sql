@@ -146,7 +146,7 @@ INSERT INTO EXISTER VALUES ('COQU', 'S003', false, true);
 
 -- UTILISATEURS
 -- CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
-DROP USER IF EXISTS 'visiteur'@'%';
+DROP USER IF EXISTS 'visiteur';
 flush privileges;
 CREATE USER 'visiteur'@'%' IDENTIFIED BY 'visiteur';
 

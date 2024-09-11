@@ -14,9 +14,24 @@ echo '
             <input type="submit" class="headerElem hBtn" name="page" value="Viennoiseries">
             <input type="submit" class="headerElem hBtn" name="page" value="Spécialités">
             <input type="submit" class="headerElem hBtn" name="page" value="Commandes">
-            <input type="submit" class="headerElem hBtn" name="page" value="Connexion">
-        </form>
-    </header>
-</html>
 ';
+
+if($idU == 'visiteur')
+{
+    echo '
+            <input type="submit" class="headerElem hBtn" name="page" value="Connexion">
+            </form>
+        </header>
+    </html>
+    ';
+}
+else
+{
+    echo '
+    <div class="headerElem username">👤 '.$idU.'</br>
+    </form>
+    <input type="submit" class="headerElem hBtn" name="page" value="Déconnexion"></div>
+    </header>
+    </html>';
+}
 ?>
