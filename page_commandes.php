@@ -13,11 +13,11 @@ function getCommandeActuelle($pdo, $idU) {
         $row = $sql->fetch(); //récupère la commande dans la ligne
 
         //--> rajouter la date mise à jour (???) ------------------------------------------------ VERIFIER LE FONCTIONNEMENT
-        $dt = time(); //récupère le nombre de secondes depuis l'heure unix
-        $date = date( "d/m/Y H:i", $dt ); // retrouve la date et l'heure actuelle à partir de $dt
-        $sqlDateMiseajour = $pdo->prepare("INSERT INTO COMMANDE.dateCommande VALUES($date);");
-        $sqlDateMiseajour->execute();
-        $row = $sql->fetch(); //récupère la commande dans la ligne
+        //$dt = time(); //récupère le nombre de secondes depuis l'heure unix
+        //$date = date( "Y-m-d", $dt ); // retrouve la date et l'heure actuelle à partir de $dt
+        //$sqlDateMiseajour = $pdo->prepare("INSERT INTO COMMANDE.dateCommande VALUES($date);");
+        //$sqlDateMiseajour->execute();
+        //$row = $sql->fetch(); //récupère la commande dans la ligne
     }
     catch(Exception $e){
         die ('Erreur :'. $e->getMessage()); // Va mettre fin au programme et afficher l'erreur
@@ -46,7 +46,7 @@ function getCommandeActuelle($pdo, $idU) {
 function creerCommande($pdo, $idU) {
     try {
         $dt = time(); //récupère le nombre de secondes depuis l'heure unix
-        $date = date( "d/m/Y H:i", $dt ); // retrouve la date et l'heure actuelle à partir de $dt
+        $date = date( "Y-m-d", $dt ); // retrouve la date et l'heure actuelle à partir de $dt
         $sql = $pdo->prepare("INSERT INTO COMMANDE VALUES(null, 0, '$idU', $date);");
         $sql->execute();
         $row = $sql->fetch();
