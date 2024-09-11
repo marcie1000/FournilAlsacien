@@ -11,6 +11,13 @@ function getCommandeActuelle($pdo, $idU) {
         $sql = $pdo->prepare("SELECT MAX(COMMANDE.idCommande) AS 'comActuelle' FROM COMMANDE  WHERE COMMANDE.idU = '$idU';");
         $sql->execute(); //execute la requete
         $row = $sql->fetch(); //récupère la commande dans la ligne
+
+        //--> rajouter la date mise à jour (???) ------------------------------------------------ VERIFIER LE FONCTIONNEMENT
+        $dt = time(); //récupère le nombre de secondes depuis l'heure unix
+        $date = date( "d/m/Y H:i", $dt ); // retrouve la date et l'heure actuelle à partir de $dt
+        $sqlDateMiseajour = $pdo->prepare("INSERT INTO COMMANDE.dateCommande VALUES($date);");
+        $sqlDateMiseajour->execute();
+        $row = $sql->fetch(); //récupère la commande dans la ligne
     }
     catch(Exception $e){
         die ('Erreur :'. $e->getMessage()); // Va mettre fin au programme et afficher l'erreur
